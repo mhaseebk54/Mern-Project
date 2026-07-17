@@ -3,6 +3,8 @@ import dotenv from 'dotenv'
 import proxy from 'express-http-proxy'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
+import authmiddleware from './middleware/auth-middle.js'
+import getCurrentUser from './controllers/user-controller.js'
 
 dotenv.config()
     
@@ -19,9 +21,11 @@ app.use(cookieParser())
 
 app.use("/auth", proxy(process.env.AUTH_SERVICE_URL, {
   proxyReqPathResolver: (req) => {
-    return '/auth' + req.url;
+    return '/api/auth' + req.url;
   }
 }))
+
+app.get('/api/me',authmiddleware,getCurrentUser)
 
 app.get('/',(req,res)=>{
     res.send("hello world")
