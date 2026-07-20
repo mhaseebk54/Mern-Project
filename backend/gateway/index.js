@@ -19,7 +19,7 @@ app.use(cors(
 ))
 app.use(cookieParser())
 
-app.use("/auth", proxy(process.env.AUTH_SERVICE_URL, {
+app.use("/api/auth", proxy(process.env.AUTH_SERVICE_URL, {
   proxyReqPathResolver: (req) => {
     return '/api/auth' + req.url;
   }

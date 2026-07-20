@@ -14,7 +14,7 @@ app.get('/',(req,res)=>{
     res.send("hello world from auth")
 })
 
-app.use('/auth',authRoutes)
+app.use('/api/auth',authRoutes)
 
 app.listen(port ,()=>{
     console.log(`SERVER started on ${port}`)

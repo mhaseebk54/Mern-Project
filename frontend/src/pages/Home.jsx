@@ -2,13 +2,22 @@ import { signInWithPopup } from 'firebase/auth'
 import {auth,googleprovider} from '../../utilis/firebase.js'
 import api from '../../utilis/axios.js'
 import { FcGoogle } from "react-icons/fc";
+import { useSelector, useDispatch  } from 'react-redux'
+import { setUserdata } from '../redux/userSlice.js'
+
+
 
 export default function Home() {
+
+  const {userData} = useSelector((state)=>state.user)
+  const dispatch = useDispatch()
 
   const handleLogin = async(token)=>{
     try {
       const {data} = await api.post('/api/auth/login',{token},)
-      console.log(data)
+      dispatch(setUserdata(data))
+      
+      
     } catch (error) {
       console.log(error)
     }
@@ -24,9 +33,7 @@ export default function Home() {
 
   return (
     <div className='h-screen flex bg-black text-white overflow-hidden'>
-      hello
-             
-          <div className='fixed inset-0 z-50 flex items-center bg-black/60 justify-center backdrop-blur'>
+      {!userData && <div className='fixed inset-0 z-50 flex items-center bg-black/60 justify-center backdrop-blur'>
             <div className='w-[340px] bg-black border border-white/[0.08] rounded-2xl p-7 flex flex-col gap-5'>
             <div className='flex flex-col gap-1'>
 <h2 className='text-[17px] font-semibold text-slate-100 tracking-tight'>WelCome To Chatex AI</h2>
@@ -41,7 +48,8 @@ export default function Home() {
 
             </div>
 
-      </div>
+      </div>   }
+          
     </div>
   )
 }
