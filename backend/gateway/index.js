@@ -22,7 +22,10 @@ app.use(cookieParser())
 
 app.use("/api/auth", proxy(process.env.AUTH_SERVICE_URL))
 
-app.use("/api/chatservice", authmiddleware,proxywithHeader(process.env.CHAT_SERVICE_URL))
+app.use("/api/chat", authmiddleware,proxywithHeader(process.env.CHAT_SERVICE_URL))
+
+app.use("/api/agent", authmiddleware,proxy(process.env.AUTH_SERVICE_URL))
+
 
 app.get('/api/me',authmiddleware,getCurrentUser)
 
