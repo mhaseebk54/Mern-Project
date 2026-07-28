@@ -5,6 +5,7 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import authmiddleware from './middleware/auth-middle.js'
 import getCurrentUser from './controllers/user-controller.js'
+import proxywithHeader from './utilis/proxywithheader.js'
 
 dotenv.config()
     
@@ -19,11 +20,9 @@ app.use(cors(
 ))
 app.use(cookieParser())
 
-app.use("/api/auth", proxy(process.env.AUTH_SERVICE_URL, {
-  proxyReqPathResolver: (req) => {
-    return '/api/auth' + req.url;
-  }
-}))
+app.use("/api/auth", proxy(process.env.AUTH_SERVICE_URL))
+
+app.use("/api/chatservice", authmiddleware,proxywithHeader(process.env.CHAT_SERVICE_URL))
 
 app.get('/api/me',authmiddleware,getCurrentUser)
 
