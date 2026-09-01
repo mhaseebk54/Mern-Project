@@ -1,3 +1,3 @@
-export const chat = async (params){
+export const chatAgent = async (params){
 
 }
