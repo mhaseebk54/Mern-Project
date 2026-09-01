@@ -15,7 +15,8 @@ app.get('/',(req,res)=>{
     res.send("hello world from Chat Service")
 })
 
-app.router('/',router)
+// app.router('/',router)
+app.use('/chats',router)
 
 app.listen(port ,()=>{
     console.log(`Chat started on ${port}`)

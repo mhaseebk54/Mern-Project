@@ -11,6 +11,8 @@
   "type": "module",
   "description": "",
   "dependencies": {
+    "@langchain/core": "^1.2.9",
+    "@langchain/langgraph": "^1.4.13",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "mongoose": "^9.8.1",
