@@ -3,7 +3,7 @@ import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { useEffect } from "react"
 import { getConversations } from "../features/getConversations"
-import { setConversation, setSelectedConversation } from "../redux/conversation.js"
+import { addConversation, setConversation, setSelectedConversation } from "../redux/conversationSlice.js"
 import { createConversation } from "../features/createConversation.js"
 import { useSelector } from "react-redux"
 import logOut from "../features/logOut.js"
@@ -24,7 +24,7 @@ function SideBar() {
    },[userData?._id])
    const handleCreateConversation =async ()=>{
     const data = await createConversation()
-    dispatch(setConversation(data))
+    dispatch(addConversation(data))
    }
 
 
