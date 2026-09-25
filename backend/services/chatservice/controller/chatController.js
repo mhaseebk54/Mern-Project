@@ -50,7 +50,7 @@ return res.status(500).json({message:`Update Conversation Error ${error}`})
 
 export const saveMessage = async (req,res) =>{
     try{
-  const {conversationId,role,content} = req.body;
+  const {conversationId,role,content} = req.body
   const message = Message.create(
     {
       conversationId,
