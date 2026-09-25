@@ -65,6 +65,23 @@ function SideBar() {
  
 })}
         </div>
+
+
+
+      <div className="relative shrink-0">
+      {
+        (userData?.avatar && !imageError ) 
+        ?
+        <img src={userData?.avatar} alt={"image"} className="w-9 h-9 rounded-[10px] object-cover border-2 border-indigo-500/25" onError={()=>setImageError(true)}/>
+        :
+         <div className='w-9 h-9 rounded-[10px] flex items-center justify-center bg-white/[0.06]'> 
+         <User size={15} className="text-slate-400"/> 
+         </div>
+       }
+        </div>
+
+        
+
       </div>
     )
   }
@@ -150,7 +167,7 @@ function SideBar() {
     (<div className="flex items-center gap-2.5 cursor-pointer rounded-xl px-3 py-2.5  bg-white/[0.05] transition-colors duration-150 hover:bg-white/[0.08]">
       <div className="relative shrink-0">
       {
-        (userData?.avatar || !imageError ) 
+        (userData?.avatar && !imageError ) 
         ?
         <img src={userData?.avatar} alt={"image"} className="w-9 h-9 rounded-[10px] object-cover border-2 border-indigo-500/25" onError={()=>setImageError(true)}/>
         :
