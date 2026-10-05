@@ -1,3 +1,3 @@
-export const imagegenAgent = async (params){
-
+export const imagegenAgent = async (state)=>{
+return state;
 }

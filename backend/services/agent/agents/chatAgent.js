@@ -1,4 +1,4 @@
-import { getllm } from "../config/llmmodel"
+import { getllm } from "../config/llmmodel.js";
 
 export const chatAgent = async (state) => {
     const llm =await getllm("chat")
@@ -10,7 +10,7 @@ export const chatAgent = async (state) => {
     },
 {
 "role": "human",
-"content": state.query
+"content": state.prompt
 }
 ]);
     return {...state,

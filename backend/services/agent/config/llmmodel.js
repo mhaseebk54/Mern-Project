@@ -1,15 +1,16 @@
+import "dotenv/config"
 import { ChatGroq } from "@langchain/groq";
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai"
 
 
 const groq = new ChatGroq({
-  model: "openai/gpt-oss-120b",
+  model: "llama-3.1-70b-versatile",
   temperature: 0,
   maxRetries: 3,
 });
 
 const gemini = new ChatGoogleGenerativeAI({
-  model: "gemini-2.5-flash",
+  model: "gemini-1.5-flash",
   temperature: 0,
   maxRetries: 3,
 });
